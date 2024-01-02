@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">N-Tree</string>
+    <string name="to_login">Увійти в профіль користувача</string>
+    <string name="to_register">Зареєструватися</string>
+
+    <string name="main_activity">Main Activity</string>
+    <string name="login_activity">Login Activity</string>
+    <string name="register_activity">Register Activity</string>
+</resources>
