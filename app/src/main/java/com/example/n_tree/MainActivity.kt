@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity(), GestureDetector.OnGestureListener {
 
                     if (abs(valueX) > MIN_DISTANCE) {
                         if (x2 < x1) {
-                            Toast. makeText(this, "yippe!", Toast.LENGTH_SHORT).show()
+                            Toast. makeText(this, "Успішно!", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@MainActivity, LoginActivity::class.java)
                             startActivity(intent)
                         }

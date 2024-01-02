@@ -21,4 +21,9 @@
         <item>medium</item>
         <item>blogger</item>
     </string-array>
+    
+<!--    font sizes-->
+    <string name="base_font">16sp</string> <!-- == 12px -->
+    <string name="button_font">19sp</string> <!-- == 14px -->
+    <string name="title_font">27sp</string> <!-- == 20px -->
 </resources>

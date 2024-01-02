@@ -3,20 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@drawable/linear_gradient_background"
-    android:id="@+id/main_layout"
     tools:context=".MainActivity">
 
-    <Button
-        android:id = "@+id/swap"
-        android:layout_width = "wrap_content"
-        android:layout_height = "wrap_content"
-        android:text = "Проведіть для продовження"/>
-
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/main_activity" />-->
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/n-tree-logo-transparent"
+            android:contentDescription="@string/my_image_description"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="Проведіть для продовження"
+            android:textSize="@string/base_font"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 </LinearLayout>
