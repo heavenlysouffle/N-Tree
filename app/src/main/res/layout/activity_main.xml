@@ -5,25 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/linear_gradient_background"
+    android:id="@+id/main_layout"
     tools:context=".MainActivity">
+
+    <Button
+        android:id = "@+id/swap"
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "Проведіть для продовження"/>
 
 <!--    <TextView-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:text="@string/main_activity" />-->
-
-    <Button
-        android:id="@+id/main_to_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to_login"
-        android:padding="16dp" />
-
-    <Button
-        android:id="@+id/main_to_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to_register"
-        android:padding="16dp" />
 
 </LinearLayout>
