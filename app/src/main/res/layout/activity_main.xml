@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,7 +22,8 @@
             android:scaleType="fitCenter"
             android:maxWidth="248dp"
             android:layout_weight="1"
-            android:src="@drawable/n_tree_logo_transparent" />
+            android:src="@drawable/n_tree_logo_transparent"
+            android:contentDescription="App transparent logo"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:padding="5dp"
             android:layout_marginTop="160dp"
             android:text="Проведіть для продовження"
-            android:textSize="@string/base_font"
+            android:textSize="16sp"
             android:textColor="@color/white"/>
     </LinearLayout>
 
