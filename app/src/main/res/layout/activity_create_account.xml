@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_neutral"
+    tools:context=".CreateAccountActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account_create_activity" />
+
+    <EditText
+        android:id="@+id/create_account_text_field_nickname"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Nickname"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/create_account_text_field_first_name"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="First Name"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/create_account_text_field_last_name"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Last Name"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/create_account_text_field_description"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Description"
+        android:layout_height="48dp" />
+
+    <Button
+        android:id="@+id/create_account_upload_photo_button"
+        android:layout_height="wrap_content"
+        android:layout_width="210dp"
+        android:text="photo" />
+
+    <ImageView
+        android:id="@+id/create_account_uploaded_photo_view"
+        android:layout_width="205dp"
+        android:layout_height="205dp" />
+
+    <TextView
+        android:id="@+id/create_account_error_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        />
+
+    <Button
+        android:id="@+id/create_account_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_create"
+        android:padding="16dp" />
+
+</LinearLayout>
