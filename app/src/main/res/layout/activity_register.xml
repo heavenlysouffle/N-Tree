@@ -12,11 +12,32 @@
         android:layout_height="wrap_content"
         android:text="@string/register_activity" />
 
+    <EditText
+        android:id="@+id/register_text_field_email"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Email"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/register_text_field_password"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Password"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/register_text_field_nickname"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Nickname"
+        android:layout_height="48dp" />
+
     <Button
-        android:id="@+id/register_to_login"
+        android:id="@+id/register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/to_login"
+        android:text="@string/to_register"
         android:padding="16dp" />
 
 </LinearLayout>
