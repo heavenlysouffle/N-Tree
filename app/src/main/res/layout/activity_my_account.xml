@@ -3,13 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_neutral"
-    tools:context=".LinkCreateActivity">
+    android:orientation="horizontal"
+    android:background="@drawable/accent_gradient_background"
+    tools:context=".MyAccountActivity">
 
-    <TextView
-        android:id="@+id/my_account_text_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/my_account_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="54dp"
+            android:textColor="@color/green_dark"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/my_account_text_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </LinearLayout>

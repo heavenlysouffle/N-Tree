@@ -52,6 +52,8 @@ class MyAccountActivity : ComponentActivity() {
                             val jsonObject = JSONObject(body.toString())
                             Log.e("TAG", jsonObject.toString(2))
                             val nickname = jsonObject.getString("nickname").toString()
+                            findViewById<TextView>(R.id.my_account_nickname).text = nickname
+
                             val firstName = jsonObject.getString("first_name").toString()
                             val lastName = jsonObject.getString("last_name").toString()
                             val description = jsonObject.getString("description").toString()
