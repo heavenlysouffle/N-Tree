@@ -67,4 +67,5 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
+    implementation("androidx.security:security-crypto:1.0.0-rc04")
 }
