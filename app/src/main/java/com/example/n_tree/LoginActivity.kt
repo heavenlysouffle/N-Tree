@@ -8,8 +8,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -30,6 +28,7 @@ class LoginActivity : ComponentActivity() {
         val errorTextView = findViewById<TextView>(R.id.login_error_text_view)
 
         val buttonRegister: Button = findViewById(R.id.login_btn)
+        buttonRegister.background.alpha = 128
         buttonRegister.setOnClickListener {
             val URL = "http://185.69.154.93/api/auth/login"
             if (URL.isNotEmpty()) {

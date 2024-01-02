@@ -3,42 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_neutral"
+    android:background="@drawable/linear_gradient_background"
+    android:orientation="horizontal"
     tools:context=".LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_activity" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/text_field_email"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_width="210dp"
-        android:hint="Email"
-        android:layout_height="48dp" />
+        <ImageView
+            android:id="@+id/login_logo_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:maxWidth="173dp"
+            android:layout_weight="1"
+            android:src="@drawable/n_tree_icon"
+            android:contentDescription="App transparent icon"/>
 
-    <EditText
-        android:id="@+id/text_field_password"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="Password"
-        android:layout_height="48dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="54dp"
+            android:text="Увійти в акаунт користувача"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/login_error_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        />
+        <EditText
+            android:id="@+id/text_field_email"
+            android:layout_width="210dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:hint="Email"
+            android:textColor="@color/green_dark" />
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/to_login"
-        android:padding="16dp" />
+        <EditText
+            android:id="@+id/text_field_password"
+            android:layout_width="210dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:hint="Password"
+            android:textColor="@color/green_dark" />
+
+        <TextView
+            android:id="@+id/login_error_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/error" />
+
+        <Button
+            android:id="@+id/login_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/attention_button"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp"
+            android:text="Продовжити"
+            android:textColor="@color/green_dark" />
+
+    </LinearLayout>
 
 </LinearLayout>
