@@ -23,6 +23,7 @@ class RegisterActivity : ComponentActivity() {
         title = "N-Tree"
 
         val registerBtn = findViewById<Button>(R.id.register_btn)
+        registerBtn.background.alpha = 128
         val textFieldEmail = findViewById<EditText>(R.id.register_text_field_email)
         val textFieldPassword = findViewById<EditText>(R.id.register_text_field_password)
         val textFieldNickname = findViewById<EditText>(R.id.register_text_field_nickname)
