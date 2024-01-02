@@ -53,22 +53,9 @@ class LoginActivity : ComponentActivity() {
                             } else {
                                 val body = response.body?.string()
                                 val jsonObject = JSONObject(body.toString())
-                                val token = jsonObject.getString("token")
+                                val token = jsonObject.getString("token").toString()
 
-                                val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-                                val sharedPreferences = EncryptedSharedPreferences.create(
-                                    "secret_shared_prefs",
-                                    masterKeyAlias,
-                                    applicationContext,
-                                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-                                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-                                )
-
-                                with(sharedPreferences.edit()) {
-                                    putString("token", token)
-                                    apply()
-                                }
-                                val savedToken = sharedPreferences.getString("token", "").toString()
+                                val savedToken = setToken(applicationContext, token)
 
                                 Log.i("TAG", savedToken)
                             }
