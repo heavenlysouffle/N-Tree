@@ -13,5 +13,6 @@
     <color name="green_light">#76B947</color>
     <color name="background_neutral">#B2D2A4</color>
     <color name="accent">#E5A298</color>
+    <color name="error">#B3261E</color>
     <color name="end_gradient">#326121</color>
 </resources>
