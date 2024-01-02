@@ -5,6 +5,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.ComponentActivity
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.FormBody
@@ -53,7 +55,22 @@ class LoginActivity : ComponentActivity() {
                                 val jsonObject = JSONObject(body.toString())
                                 val token = jsonObject.getString("token")
 
-                                Log.i("TAG", token)
+                                val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+                                val sharedPreferences = EncryptedSharedPreferences.create(
+                                    "secret_shared_prefs",
+                                    masterKeyAlias,
+                                    applicationContext,
+                                    EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+                                    EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+                                )
+
+                                with(sharedPreferences.edit()) {
+                                    putString("token", token)
+                                    apply()
+                                }
+                                val savedToken = sharedPreferences.getString("token", "").toString()
+
+                                Log.i("TAG", savedToken)
                             }
                         }
                     }
