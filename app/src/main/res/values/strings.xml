@@ -1,9 +1,24 @@
 <resources>
     <string name="app_name">N-Tree</string>
     <string name="to_login">Увійти в профіль користувача</string>
+    <string name="btn_create">Створити</string>
     <string name="to_register">Зареєструватися</string>
 
     <string name="main_activity">Main Activity</string>
     <string name="login_activity">Login Activity</string>
     <string name="register_activity">Register Activity</string>
+    <string name="link_create_activity">Link Create Activity</string>
+
+    <string-array name="social_media_platforms">
+        <item>instagram</item>
+        <item>facebook</item>
+        <item>tiktok</item>
+        <item>t.me</item>
+        <item>tumblr</item>
+        <item>youtube</item>
+        <item>twitch</item>
+        <item>wordpress</item>
+        <item>medium</item>
+        <item>blogger</item>
+    </string-array>
 </resources>
