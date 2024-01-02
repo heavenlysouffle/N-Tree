@@ -18,8 +18,6 @@ class MyAccountActivity : ComponentActivity() {
         setContentView(R.layout.activity_my_account)
         title = "N-Tree"
 
-        val textField = findViewById<TextView>(R.id.my_account_text_field)
-
         val URL = "http://185.69.154.93/api/my-account"
         if (URL.isNotEmpty()) {
             val fetchData = OkHttpClient()
@@ -52,13 +50,19 @@ class MyAccountActivity : ComponentActivity() {
                         } else {
                             val body = response.body?.string()
                             val jsonObject = JSONObject(body.toString())
+                            Log.e("TAG", jsonObject.toString(2))
                             val nickname = jsonObject.getString("nickname").toString()
                             val firstName = jsonObject.getString("first_name").toString()
                             val lastName = jsonObject.getString("last_name").toString()
                             val description = jsonObject.getString("description").toString()
                             val photoUrl = jsonObject.getString("photo").toString()
-                        // todo: create Link property and loop array<Link>
-                        // val nickname = jsonObject.getString("links")
+                            // todo: create Link property and loop array<Link>
+                            // val nickname = jsonObject.getString("links")
+
+                            runOnUiThread {
+                                val textField = findViewById<TextView>(R.id.my_account_text_field)
+                                textField.text = jsonObject.toString(2)
+                            }
                         }
                     }
                 }
