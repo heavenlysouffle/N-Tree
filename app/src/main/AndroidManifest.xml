@@ -34,6 +34,9 @@
         <activity android:name=".LinkCreateActivity">
 
         </activity>
+        <activity android:name=".MyAccountActivity">
+
+        </activity>
     </application>
 
 </manifest>
