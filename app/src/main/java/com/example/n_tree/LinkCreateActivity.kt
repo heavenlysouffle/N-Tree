@@ -1,11 +1,14 @@
 package com.example.n_tree
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import okhttp3.Call
 import okhttp3.Callback
@@ -36,8 +39,9 @@ class LinkCreateActivity : ComponentActivity() {
         }
 
         val textFieldLink = findViewById<EditText>(R.id.text_field_link)
+        val errorTextView = findViewById<TextView>(R.id.link_create_error_text_view)
 
-        val buttonRegister: Button = findViewById(R.id.login_btn)
+        val buttonRegister: Button = findViewById(R.id.link_create_btn)
         buttonRegister.setOnClickListener {
             val URL = "http://185.69.154.93/api/link"
             if (URL.isNotEmpty()) {
@@ -64,8 +68,23 @@ class LinkCreateActivity : ComponentActivity() {
                     override fun onResponse(call: Call, response: Response) {
                         response.use {
                             if (!response.isSuccessful) {
-                                Log.e("TAG", "Request failed with status code: ${response.code}")
-                                Log.e("TAG", "Response body: ${response.body?.string()}")
+                                val errorCode: String
+                                val errorMessage: String
+
+                                if (response.code >= 500) {
+                                    errorCode = "Request failed with status code: ${response.code}"
+                                    errorMessage = "Server Error"
+                                } else {
+                                    errorCode = "Request failed with status code: ${response.code}"
+                                    errorMessage = response.body?.string().toString()
+                                }
+                                Log.e("TAG", errorCode)
+                                Log.e("TAG", errorMessage)
+
+                                val intent = Intent(this@LinkCreateActivity, LinkCreateActivity::class.java)
+                                intent.putExtra("error", errorCode + "\n" + errorMessage)
+                                finish()
+                                startActivity(intent)
                             } else {
                                 val body = response.body?.string()
                                 val jsonObject = JSONObject(body.toString())
@@ -79,6 +98,14 @@ class LinkCreateActivity : ComponentActivity() {
             } else {
                 println("Url was empty")
             }
+        }
+
+        val error = intent.getStringExtra("error")
+        if (error != null) {
+            errorTextView.text = error
+            errorTextView.postDelayed({
+                errorTextView.visibility = View.GONE
+            }, 5000)
         }
     }
 }

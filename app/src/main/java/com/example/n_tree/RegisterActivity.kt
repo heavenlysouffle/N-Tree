@@ -3,8 +3,10 @@ package com.example.n_tree
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import okhttp3.Call
 import okhttp3.Callback
@@ -24,6 +26,7 @@ class RegisterActivity : ComponentActivity() {
         val textFieldEmail = findViewById<EditText>(R.id.register_text_field_email)
         val textFieldPassword = findViewById<EditText>(R.id.register_text_field_password)
         val textFieldNickname = findViewById<EditText>(R.id.register_text_field_nickname)
+        val errorTextView = findViewById<TextView>(R.id.register_error_text_view)
 
         registerBtn.setOnClickListener {
             val URL = "http://185.69.154.93/api/auth/register"
@@ -48,8 +51,23 @@ class RegisterActivity : ComponentActivity() {
                     override fun onResponse(call: Call, response: Response) {
                         response.use {
                             if (!response.isSuccessful) {
-                                Log.e("TAG", "Request failed with status code: ${response.code}")
-                                Log.e("TAG", "Response body: ${response.body?.string()}")
+                                val errorCode: String
+                                val errorMessage: String
+
+                                if (response.code >= 500) {
+                                    errorCode = "Request failed with status code: ${response.code}"
+                                    errorMessage = "Server Error"
+                                } else {
+                                    errorCode = "Request failed with status code: ${response.code}"
+                                    errorMessage = response.body?.string().toString()
+                                }
+                                Log.e("TAG", errorCode)
+                                Log.e("TAG", errorMessage)
+
+                                val intent = Intent(this@RegisterActivity, RegisterActivity::class.java)
+                                intent.putExtra("error", errorCode + "\n" + errorMessage)
+                                finish()
+                                startActivity(intent)
                             } else {
                                 val i = Intent(this@RegisterActivity, LoginActivity::class.java)
                                 startActivity(i)
@@ -60,6 +78,14 @@ class RegisterActivity : ComponentActivity() {
             } else {
                 println("Url was empty")
             }
+        }
+
+        val error = intent.getStringExtra("error")
+        if (error != null) {
+            errorTextView.text = error
+            errorTextView.postDelayed({
+                errorTextView.visibility = View.GONE
+            }, 5000)
         }
     }
 }
