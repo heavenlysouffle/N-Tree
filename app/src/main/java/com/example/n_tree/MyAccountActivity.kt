@@ -1,18 +1,63 @@
 package com.example.n_tree
 
-import android.os.Bundle
+import android.content.Intent
+import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.os.*
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
 import android.util.Log
+import android.util.Xml
+import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import com.example.n_tree.model.Link
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import org.json.JSONObject
+import org.xmlpull.v1.XmlPullParser
+import org.xmlpull.v1.XmlPullParserFactory
 import java.io.IOException
+import java.io.StringReader
+import java.io.StringWriter
+import java.net.HttpURLConnection
+import java.net.URL
+import java.util.concurrent.Executors
+
 
 class MyAccountActivity : ComponentActivity() {
+    private val executor = Executors.newSingleThreadExecutor()
+
+    @Throws(IOException::class)
+    fun drawableFromUrl(url: String?): Drawable {
+        var result: Drawable? = null
+        val future = executor.submit<Drawable> {
+            val x: Bitmap
+            val connection = URL(url).openConnection() as HttpURLConnection
+            connection.connect()
+            val input = connection.inputStream
+            x = BitmapFactory.decodeStream(input)
+            BitmapDrawable(Resources.getSystem(), x)
+        }
+        try {
+            result = future.get()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return result!!
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_account)
@@ -56,12 +101,76 @@ class MyAccountActivity : ComponentActivity() {
                             val lastName = jsonObject.getString("last_name").toString()
                             val description = jsonObject.getString("description").toString()
                             val photoUrl = jsonObject.getString("photo").toString()
-                            // todo: create Link property and loop array<Link>
-                            // val nickname = jsonObject.getString("links")
+
+                            val linksJsonArray = jsonObject.getJSONArray("links")
+                            val links = mutableListOf<Link>()
+                            for (i in 0 until linksJsonArray.length()) {
+                                val linkJsonObject = linksJsonArray.getJSONObject(i)
+                                val link = Link(
+                                    linkJsonObject.getString("network"),
+                                    linkJsonObject.getString("url")
+                                )
+                                links.add(link)
+                            }
+
+                            val serializer = Xml.newSerializer()
+                            val writer = StringWriter()
+                            serializer.setOutput(writer)
+                            serializer.startDocument("UTF-8", true)
+                            serializer.setFeature("http://xmlpull.org/v1/doc/features.html#indent-output", true)
+                            serializer.startTag("", "links")
+
+                            for (link in links) {
+                                serializer.startTag("", "link")
+                                serializer.attribute("", "network", link.network)
+                                serializer.attribute("", "url", link.url)
+                                serializer.endTag("", "link")
+                            }
+
+                            serializer.endTag("", "links")
+                            serializer.endDocument()
+
+                            val xmlString = writer.toString()
 
                             runOnUiThread {
-                                val textField = findViewById<TextView>(R.id.my_account_text_field)
-                                textField.text = jsonObject.toString(2)
+                                val photoView = findViewById<ImageView>(R.id.my_account_photo_view)
+                                val drawable = drawableFromUrl(photoUrl)
+                                val nicknameView = findViewById<TextView>(R.id.my_account_text_field_nickname)
+                                val firstNameView = findViewById<TextView>(R.id.my_account_text_field_first_name)
+                                val lastNameView = findViewById<TextView>(R.id.my_account_text_field_last_name)
+                                val descriptionView = findViewById<TextView>(R.id.my_account_text_field_description)
+
+                                photoView.setImageDrawable(drawable)
+                                nicknameView.text = "Nickname: $nickname"
+                                firstNameView.text = "First Name: $firstName"
+                                lastNameView.text = "Last Name: $lastName"
+                                descriptionView.text = "Description: $description"
+
+                                val linearLayout = findViewById<LinearLayout>(R.id.my_account_links_layout)
+                                val factory = XmlPullParserFactory.newInstance()
+                                val parser = factory.newPullParser()
+                                parser.setInput(StringReader(xmlString))
+                                var eventType = parser.eventType
+                                while (eventType != XmlPullParser.END_DOCUMENT) {
+                                    if (eventType == XmlPullParser.START_TAG && parser.name == "link") {
+                                        val network = parser.getAttributeValue(null, "network")
+                                        val url = parser.getAttributeValue(null, "url")
+                                        val textView = TextView(this@MyAccountActivity)
+                                        val spannableString = SpannableString("$network: $url")
+                                        val urlSpan = object : URLSpan(url) {
+                                            override fun onClick(widget: View) {
+                                                val intent = Intent(Intent.ACTION_VIEW)
+                                                intent.data = Uri.parse(url)
+                                                startActivity(intent)
+                                            }
+                                        }
+                                        spannableString.setSpan(urlSpan, spannableString.indexOf(url), spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                                        textView.text = spannableString
+                                        textView.movementMethod = LinkMovementMethod.getInstance()
+                                        linearLayout.addView(textView)
+                                    }
+                                    eventType = parser.next()
+                                }
                             }
                         }
                     }
