@@ -12,11 +12,26 @@
         android:layout_height="wrap_content"
         android:text="@string/login_activity" />
 
+    <EditText
+        android:id="@+id/text_field_email"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_width="210dp"
+        android:hint="Email"
+        android:layout_height="48dp" />
+
+    <EditText
+        android:id="@+id/text_field_password"
+        android:layout_marginStart="0dp"
+        android:layout_width="210dp"
+        android:hint="Password"
+        android:layout_height="48dp" />
+
     <Button
-        android:id="@+id/login_to_register"
+        android:id="@+id/login_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/to_register"
+        android:text="@string/to_login"
         android:padding="16dp" />
 
 </LinearLayout>
