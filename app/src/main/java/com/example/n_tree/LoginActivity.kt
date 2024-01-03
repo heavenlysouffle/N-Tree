@@ -29,6 +29,16 @@ class LoginActivity : ComponentActivity() {
 
         val buttonLogin: Button = findViewById(R.id.login_btn)
         buttonLogin.background.alpha = 128
+        val buttonRegister: Button = findViewById(R.id.login_to_register_btn)
+        buttonRegister.background.alpha = 30
+
+        buttonRegister.setOnClickListener(
+            View.OnClickListener {
+                val i: Intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                startActivity(i)
+            }
+        )
+
         buttonLogin.setOnClickListener {
             val URL = "http://185.69.154.93/api/auth/login"
             if (URL.isNotEmpty()) {
