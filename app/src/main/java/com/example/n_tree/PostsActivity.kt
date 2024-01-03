@@ -189,12 +189,56 @@ class PostsActivity: ComponentActivity() {
                                                                     } else {
                                                                         errorCode = "Request failed with status code: ${response.code}"
                                                                         errorMessage = response.body?.string().toString()
+
+                                                                        if (errorMessage == "{\"errors\":[\"Like is already exists.\"]}") {
+                                                                            val URL2 = "http://185.69.154.93/api/like"
+                                                                            if (URL2.isNotEmpty()) {
+                                                                                val fetchData2 = OkHttpClient()
+
+                                                                                val formBody1 = FormBody.Builder()
+                                                                                        .add("post_id", id.toString())
+                                                                                        .build()
+
+                                                                                val request2 = Request.Builder()
+                                                                                    .url(URL2)
+                                                                                    .delete(formBody1)
+                                                                                    .addHeader("Authorization", "Bearer " + getToken(applicationContext))
+                                                                                    .build()
+
+                                                                                fetchData2.newCall(request2).enqueue(object : Callback {
+                                                                                        override fun onFailure(call: Call, e: IOException) {
+                                                                                            e.printStackTrace()
+                                                                                        }
+
+                                                                                        override fun onResponse(call: Call, response: Response) {
+                                                                                            response.use {
+                                                                                                if (!response.isSuccessful) {
+                                                                                                    val errorCode1: String
+                                                                                                    val errorMessage1: String
+
+                                                                                                    if (response.code >= 500) {
+                                                                                                        errorCode1 = "Request failed with status code: ${response.code}"
+                                                                                                        errorMessage1 = "Server Error"
+                                                                                                    } else {
+                                                                                                        errorCode1 = "Request failed with status code: ${response.code}"
+                                                                                                        errorMessage1 = response.body?.string().toString()
+                                                                                                    }
+                                                                                                    Log.e("TAG", errorCode1)
+                                                                                                    Log.e("TAG", errorMessage1)
+                                                                                                } else {
+                                                                                                    Log.i("TAG", response.body?.string().toString())
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    })
+                                                                            }
+                                                                        }
+
                                                                     }
                                                                     Log.e("TAG", errorCode)
                                                                     Log.e("TAG", errorMessage)
                                                                 } else {
                                                                     Log.i("TAG", response.body?.string().toString())
-
                                                                 }
                                                             }
                                                         }
