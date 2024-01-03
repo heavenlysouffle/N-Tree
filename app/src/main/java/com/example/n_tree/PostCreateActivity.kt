@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import okhttp3.Call
 import okhttp3.Callback
@@ -15,7 +14,6 @@ import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import org.json.JSONObject
 import java.io.IOException
 
 class PostCreateActivity : ComponentActivity() {
@@ -71,7 +69,7 @@ class PostCreateActivity : ComponentActivity() {
                                 finish()
                                 startActivity(intent)
                             } else {
-                                val i = Intent(this@PostCreateActivity, MyAccountActivity::class.java)
+                                val i = Intent(this@PostCreateActivity, PostsActivity::class.java)
                                 startActivity(i)
                             }
                         }
