@@ -14,6 +14,7 @@ import androidx.activity.ComponentActivity
 import com.example.n_tree.model.Post
 import okhttp3.Call
 import okhttp3.Callback
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -88,6 +89,7 @@ class PostsActivity: ComponentActivity() {
                             for (i in 0 until postsJsonArray.length()) {
                                 val linkJsonObject = postsJsonArray.getJSONObject(i)
                                 val post = Post(
+                                    linkJsonObject.getInt("id"),
                                     linkJsonObject.getString("content"),
                                     linkJsonObject.getJSONArray("tags").toString()
                                 )
@@ -105,6 +107,7 @@ class PostsActivity: ComponentActivity() {
                                 serializer.startTag("", "post")
                                 serializer.attribute("", "content", post.content)
                                 serializer.attribute("", "tags", post.tags)
+                                serializer.attribute("", "id", post.id.toString())
                                 serializer.endTag("", "post")
                             }
 
@@ -123,8 +126,10 @@ class PostsActivity: ComponentActivity() {
                                     if (eventType == XmlPullParser.START_TAG && parser.name == "post") {
                                         val content = parser.getAttributeValue(null, "content")
                                         val tags = parser.getAttributeValue(null, "tags")
+                                        val id = parser.getAttributeValue(null, "id").toInt()
+
                                         val textView = TextView(this@PostsActivity)
-                                        textView.text = "$content \n $tags"
+                                        textView.text = "Контент: $content \n теги: $tags"
                                         textView.movementMethod = LinkMovementMethod.getInstance()
                                         textView.gravity = Gravity.CENTER_HORIZONTAL
                                         textView.setBackgroundResource(R.drawable.card_background)
@@ -138,11 +143,75 @@ class PostsActivity: ComponentActivity() {
                                         params.setMargins(0, 0, 0, 10)
                                         textView.setLayoutParams(params)
 
-                                        linearLayout.addView(textView)
+                                        val button = Button(this@PostsActivity)
+                                        button.setBackgroundResource(R.drawable.heart)
+                                        val buttonParams = LinearLayout.LayoutParams(
+                                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT
+                                        )
+                                        button.layoutParams = buttonParams
+                                        button.setOnClickListener {
+                                            val URL1 = "http://185.69.154.93/api/like"
+                                            if (URL1.isNotEmpty()) {
+                                                val fetchData1 = OkHttpClient()
+
+                                                val formBody = FormBody.Builder()
+                                                    .add("post_id", id.toString())
+                                                    .build()
+
+                                                val request1 = Request.Builder()
+                                                    .url(URL1)
+                                                    .post(formBody)
+                                                    .addHeader("Authorization", "Bearer " + getToken(applicationContext))
+                                                    .build()
+
+                                                fetchData1.newCall(request1)
+                                                    .enqueue(object : Callback {
+                                                        override fun onFailure(
+                                                            call: Call,
+                                                            e: IOException
+                                                        ) {
+                                                            e.printStackTrace()
+                                                        }
+
+                                                        override fun onResponse(
+                                                            call: Call,
+                                                            response: Response
+                                                        ) {
+                                                            response.use {
+                                                                if (!response.isSuccessful) {
+                                                                    val errorCode: String
+                                                                    val errorMessage: String
+
+                                                                    if (response.code >= 500) {
+                                                                        errorCode = "Request failed with status code: ${response.code}"
+                                                                        errorMessage = "Server Error"
+                                                                    } else {
+                                                                        errorCode = "Request failed with status code: ${response.code}"
+                                                                        errorMessage = response.body?.string().toString()
+                                                                    }
+                                                                    Log.e("TAG", errorCode)
+                                                                    Log.e("TAG", errorMessage)
+                                                                } else {
+                                                                    Log.i("TAG", response.body?.string().toString())
+
+                                                                }
+                                                            }
+                                                        }
+                                                    })
+                                            }
+                                        }
+
+                                        val horizontalLayout = LinearLayout(this@PostsActivity)
+                                        horizontalLayout.orientation = LinearLayout.HORIZONTAL
+
+                                        horizontalLayout.addView(textView)
+                                        horizontalLayout.addView(button)
+
+                                        linearLayout.addView(horizontalLayout)
                                     }
                                     eventType = parser.next()
                                 }
-
                                 val buttonPrevPage: Button = findViewById(R.id.posts_previous_page)
                                 buttonPrevPage.background.alpha = 128
                                 buttonPrevPage.setOnClickListener(
