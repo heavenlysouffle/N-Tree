@@ -6,7 +6,6 @@
 
     <string name="register_activity">Register Activity</string>
     <string name="account_create_activity">Account Create Activity</string>
-    <string name="link_create_activity">Link Create Activity</string>
 
     <string-array name="social_media_platforms">
         <item>instagram</item>
