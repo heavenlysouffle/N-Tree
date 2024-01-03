@@ -16,6 +16,7 @@ import android.util.Log
 import android.util.Xml
 import android.view.Gravity
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -176,6 +177,8 @@ class MyAccountActivity : ComponentActivity() {
                                     }
                                     eventType = parser.next()
                                 }
+                                val buttonPosts: Button = findViewById(R.id.account_to_posts_btn)
+                                buttonPosts.background.alpha = 128
                             }
                         }
                     }
