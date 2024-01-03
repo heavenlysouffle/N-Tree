@@ -90,8 +90,14 @@ class MyAccountActivity : ComponentActivity() {
                                 errorCode = "Request failed with status code: ${response.code}"
                                 errorMessage = "Server Error"
                             } else {
+
                                 errorCode = "Request failed with status code: ${response.code}"
                                 errorMessage = response.body?.string().toString()
+
+                                if (errorMessage == "{\"errors\":[\"Account not found.\"]}") {
+                                    val i = Intent(this@MyAccountActivity, CreateAccountActivity::class.java)
+                                    startActivity(i)
+                                }
                             }
                             Log.e("TAG", errorCode)
                             Log.e("TAG", errorMessage)
