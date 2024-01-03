@@ -283,6 +283,12 @@ class PostsActivity: ComponentActivity() {
                                         startActivity(i)
                                     }
                                 )
+
+                                val buttonCreatePost: Button = findViewById(R.id.account_create_post_btn)
+                                buttonCreatePost.setOnClickListener {
+                                    val i = Intent(this@PostsActivity, PostCreateActivity::class.java)
+                                    startActivity(i)
+                                }
                             }
                         }
                     }
