@@ -86,11 +86,8 @@ class LinkCreateActivity : ComponentActivity() {
                                 finish()
                                 startActivity(intent)
                             } else {
-                                val body = response.body?.string()
-                                val jsonObject = JSONObject(body.toString())
-                                val id = jsonObject.getString("id")
-
-                                Log.i("TAG", id)
+                                val intent = Intent(this@LinkCreateActivity, MyAccountActivity::class.java)
+                                startActivity(intent)
                             }
                         }
                     }
