@@ -141,7 +141,7 @@ class PostsActivity: ComponentActivity() {
                                             LinearLayout.LayoutParams.WRAP_CONTENT
                                         )
                                         params.setMargins(0, 0, 0, 10)
-                                        textView.setLayoutParams(params)
+                                        textView.layoutParams = params
 
                                         val button = Button(this@PostsActivity)
                                         button.setBackgroundResource(R.drawable.heart)
@@ -149,6 +149,9 @@ class PostsActivity: ComponentActivity() {
                                             LinearLayout.LayoutParams.WRAP_CONTENT,
                                             LinearLayout.LayoutParams.WRAP_CONTENT
                                         )
+                                        buttonParams.width = 70
+                                        buttonParams.height = 70
+                                        buttonParams.gravity = Gravity.CENTER_VERTICAL
                                         button.layoutParams = buttonParams
                                         button.setOnClickListener {
                                             val URL1 = "http://185.69.154.93/api/like"
@@ -251,6 +254,7 @@ class PostsActivity: ComponentActivity() {
 
                                         horizontalLayout.addView(textView)
                                         horizontalLayout.addView(button)
+                                        horizontalLayout.gravity = Gravity.CENTER_HORIZONTAL
 
                                         linearLayout.addView(horizontalLayout)
                                     }
