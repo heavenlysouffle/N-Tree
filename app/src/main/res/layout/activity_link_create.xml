@@ -3,39 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_neutral"
+    android:orientation="horizontal"
+    android:background="@drawable/accent_gradient_background"
     tools:context=".LinkCreateActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/link_create_activity" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="20dp">
 
-    <EditText
-        android:id="@+id/text_field_link"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="Link"
-        android:layout_height="48dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Створення посилання"
+                android:textColor="@color/green_dark"
+                android:textSize="22sp"/>
 
-    <TextView
-        android:id="@+id/link_create_error_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:textColor="@color/green_dark"
+                android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/link_create_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_create"
-        android:padding="16dp" />
+            <EditText
+                android:id="@+id/text_field_link"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:layout_width="210dp"
+                android:hint="Link"
+                android:layout_height="48dp"
+                android:textColor="@color/green_dark"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/link_create_error_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/error"
+                />
+
+            <Button
+                android:id="@+id/link_create_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/btn_create"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/accent_button"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:textColor="@color/green_dark" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
