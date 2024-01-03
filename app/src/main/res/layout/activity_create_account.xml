@@ -3,66 +3,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_neutral"
+    android:orientation="horizontal"
+    android:background="@drawable/accent_gradient_background"
     tools:context=".CreateAccountActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/account_create_activity" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/create_account_text_field_nickname"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="Nickname"
-        android:layout_height="48dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="20dp">
 
-    <EditText
-        android:id="@+id/create_account_text_field_first_name"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="First Name"
-        android:layout_height="48dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Створення дерева"
+                android:textColor="@color/green_dark"
+                android:layout_gravity="center"
+                android:textSize="22sp"/>
 
-    <EditText
-        android:id="@+id/create_account_text_field_last_name"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="Last Name"
-        android:layout_height="48dp" />
+            <EditText
+                android:id="@+id/create_account_text_field_nickname"
+                android:layout_width="210dp"
+                android:hint="Nickname"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/green_dark"
+                android:layout_gravity="center"
+                android:textSize="16sp"/>
 
-    <EditText
-        android:id="@+id/create_account_text_field_description"
-        android:layout_marginStart="0dp"
-        android:layout_width="210dp"
-        android:hint="Description"
-        android:layout_height="48dp" />
+            <EditText
+                android:id="@+id/create_account_text_field_first_name"
+                android:layout_width="210dp"
+                android:hint="First Name"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/green_dark"
+                android:layout_gravity="center"
+                android:textSize="16sp"/>
 
-    <Button
-        android:id="@+id/create_account_upload_photo_button"
-        android:layout_height="wrap_content"
-        android:layout_width="210dp"
-        android:text="photo" />
+            <EditText
+                android:id="@+id/create_account_text_field_last_name"
+                android:layout_width="210dp"
+                android:hint="Last Name"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/green_dark"
+                android:layout_gravity="center"
+                android:textSize="16sp"/>
 
-    <ImageView
-        android:id="@+id/create_account_uploaded_photo_view"
-        android:layout_width="205dp"
-        android:layout_height="205dp" />
+            <EditText
+                android:id="@+id/create_account_text_field_description"
+                android:layout_width="210dp"
+                android:hint="Description"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/green_dark"
+                android:layout_gravity="center"
+                android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/create_account_error_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_dark"
-        />
+            <Button
+                android:id="@+id/create_account_upload_photo_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Вибрати зображення"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/secondary_button"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:textColor="@color/green_dark"/>
 
-    <Button
-        android:id="@+id/create_account_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_create"
-        android:padding="16dp" />
+            <ImageView
+                android:id="@+id/create_account_uploaded_photo_view"
+                android:layout_marginTop="10dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/create_account_error_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/holo_red_dark"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:textSize="16sp"
+                />
+
+            <Button
+                android:id="@+id/create_account_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_create"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/accent_button"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:textColor="@color/green_dark"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

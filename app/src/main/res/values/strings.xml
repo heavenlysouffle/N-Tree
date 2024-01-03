@@ -4,9 +4,6 @@
     <string name="btn_create">Створити</string>
     <string name="to_register">Створити акаунт користувача</string>
 
-    <string name="register_activity">Register Activity</string>
-    <string name="account_create_activity">Account Create Activity</string>
-
     <string-array name="social_media_platforms">
         <item>instagram</item>
         <item>facebook</item>
