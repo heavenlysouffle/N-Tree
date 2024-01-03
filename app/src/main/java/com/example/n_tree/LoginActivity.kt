@@ -27,9 +27,9 @@ class LoginActivity : ComponentActivity() {
         val textFieldPassword = findViewById<EditText>(R.id.text_field_password)
         val errorTextView = findViewById<TextView>(R.id.login_error_text_view)
 
-        val buttonRegister: Button = findViewById(R.id.login_btn)
-        buttonRegister.background.alpha = 128
-        buttonRegister.setOnClickListener {
+        val buttonLogin: Button = findViewById(R.id.login_btn)
+        buttonLogin.background.alpha = 128
+        buttonLogin.setOnClickListener {
             val URL = "http://185.69.154.93/api/auth/login"
             if (URL.isNotEmpty()) {
                 val fetchData = OkHttpClient()
@@ -76,6 +76,8 @@ class LoginActivity : ComponentActivity() {
                                 val savedToken = setToken(applicationContext, token)
 
                                 Log.i("TAG", savedToken)
+                                val intent = Intent(this@LoginActivity, MyAccountActivity::class.java)
+                                startActivity(intent)
                             }
                         }
                     }
