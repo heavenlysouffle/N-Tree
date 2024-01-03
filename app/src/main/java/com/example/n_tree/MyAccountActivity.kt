@@ -182,6 +182,7 @@ class MyAccountActivity : ComponentActivity() {
                                 buttonPosts.setOnClickListener(
                                     View.OnClickListener {
                                         val i: Intent = Intent(this@MyAccountActivity, PostsActivity::class.java)
+                                        i.putExtra("nickname", nickname)
                                         startActivity(i)
                                     }
                                 )
