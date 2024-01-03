@@ -1,8 +1,12 @@
 package com.example.n_tree
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
+import android.text.style.URLSpan
 import android.util.Log
 import android.util.Xml
 import android.view.Gravity
@@ -23,7 +27,6 @@ import org.xmlpull.v1.XmlPullParserFactory
 import java.io.IOException
 import java.io.StringReader
 import java.io.StringWriter
-
 
 class PostsActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -127,17 +130,6 @@ class PostsActivity: ComponentActivity() {
                                         textView.text = "$content \n $tags"
                                         textView.movementMethod = LinkMovementMethod.getInstance()
                                         textView.gravity = Gravity.CENTER_HORIZONTAL
-                                        textView.setBackgroundResource(R.drawable.card_background)
-                                        textView.setPadding(20, 20, 20, 20)
-                                        textView.width = 400
-
-                                        val params = LinearLayout.LayoutParams(
-                                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                                            LinearLayout.LayoutParams.WRAP_CONTENT
-                                        )
-                                        params.setMargins(0, 0, 0, 10)
-                                        textView.setLayoutParams(params)
-
                                         linearLayout.addView(textView)
                                     }
                                     eventType = parser.next()
