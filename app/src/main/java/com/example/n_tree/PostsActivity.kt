@@ -132,16 +132,8 @@ class PostsActivity: ComponentActivity() {
                                         textView.text = "Контент: $content \n теги: $tags"
                                         textView.movementMethod = LinkMovementMethod.getInstance()
                                         textView.gravity = Gravity.CENTER_HORIZONTAL
-                                        textView.setBackgroundResource(R.drawable.card_background)
                                         textView.setPadding(20, 20, 20, 20)
-                                        textView.width = 400
-
-                                        val params = LinearLayout.LayoutParams(
-                                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                                            LinearLayout.LayoutParams.WRAP_CONTENT
-                                        )
-                                        params.setMargins(0, 0, 0, 10)
-                                        textView.layoutParams = params
+                                        textView.width = 500
 
                                         val button = Button(this@PostsActivity)
                                         button.setBackgroundResource(R.drawable.heart)
@@ -255,6 +247,14 @@ class PostsActivity: ComponentActivity() {
                                         horizontalLayout.addView(textView)
                                         horizontalLayout.addView(button)
                                         horizontalLayout.gravity = Gravity.CENTER_HORIZONTAL
+                                        horizontalLayout.setBackgroundResource(R.drawable.card_background)
+
+                                        val params = LinearLayout.LayoutParams(
+                                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                                            LinearLayout.LayoutParams.WRAP_CONTENT
+                                        )
+                                        params.setMargins(0, 0, 0, 10)
+                                        horizontalLayout.layoutParams = params
 
                                         linearLayout.addView(horizontalLayout)
                                     }
