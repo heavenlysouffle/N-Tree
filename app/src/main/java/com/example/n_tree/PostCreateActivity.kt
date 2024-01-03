@@ -22,6 +22,9 @@ class PostCreateActivity : ComponentActivity() {
         setContentView(R.layout.activity_create_post)
         title = "N-Tree"
 
+        val nickname = intent.getStringExtra("nickname")
+        val page = intent.getStringExtra("page")
+
         val textFieldPost = findViewById<EditText>(R.id.text_field_post)
         val errorTextView = findViewById<TextView>(R.id.post_create_error_text_view)
 
@@ -70,6 +73,8 @@ class PostCreateActivity : ComponentActivity() {
                                 startActivity(intent)
                             } else {
                                 val i = Intent(this@PostCreateActivity, PostsActivity::class.java)
+                                i.putExtra("page", page)
+                                i.putExtra("nickname", nickname)
                                 startActivity(i)
                             }
                         }
