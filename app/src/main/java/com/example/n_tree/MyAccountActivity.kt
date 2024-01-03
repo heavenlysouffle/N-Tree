@@ -14,6 +14,7 @@ import android.text.method.LinkMovementMethod
 import android.text.style.URLSpan
 import android.util.Log
 import android.util.Xml
+import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -167,6 +168,8 @@ class MyAccountActivity : ComponentActivity() {
                                         spannableString.setSpan(urlSpan, spannableString.indexOf(url), spannableString.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
                                         textView.text = spannableString
                                         textView.movementMethod = LinkMovementMethod.getInstance()
+                                        textView.gravity = Gravity.CENTER_HORIZONTAL
+
                                         linearLayout.addView(textView)
                                     }
                                     eventType = parser.next()
