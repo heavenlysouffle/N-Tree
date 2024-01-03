@@ -20,6 +20,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.example.n_tree.model.Link
 import okhttp3.Call
 import okhttp3.Callback
@@ -169,6 +170,7 @@ class MyAccountActivity : ComponentActivity() {
                                         textView.text = spannableString
                                         textView.movementMethod = LinkMovementMethod.getInstance()
                                         textView.gravity = Gravity.CENTER_HORIZONTAL
+                                        textView.setTextColor(AppCompatResources.getColorStateList(this@MyAccountActivity, R.color.green_dark))
 
                                         linearLayout.addView(textView)
                                     }
