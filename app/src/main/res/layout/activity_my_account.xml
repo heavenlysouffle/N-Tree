@@ -93,6 +93,18 @@
                 android:textColor="@color/green_dark" />
 
             <Button
+                android:id="@+id/account_create_post_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/secondary_button"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:text="Створити публікацію"
+                android:textColor="@color/green_dark" />
+
+            <Button
                 android:id="@+id/account_to_posts_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

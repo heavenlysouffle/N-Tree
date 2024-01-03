@@ -43,6 +43,9 @@
         <activity android:name=".PostsActivity">
 
         </activity>
+        <activity android:name=".PostCreateActivity">
+
+        </activity>
     </application>
 
 </manifest>

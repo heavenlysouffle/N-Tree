@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/accent_gradient_background"
+    tools:context=".PostCreateActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/card_background"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Створення посту"
+                android:textColor="@color/green_dark"
+                android:textSize="22sp"/>
+
+            <EditText
+                android:id="@+id/text_field_post"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:layout_width="210dp"
+                android:hint="Ну шо там?"
+                android:layout_height="48dp"
+                android:textColor="@color/green_dark"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/post_create_error_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/error"
+                />
+
+            <Button
+                android:id="@+id/post_create_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/btn_create"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/accent_button"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="12dp"
+                android:textColor="@color/green_dark" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
