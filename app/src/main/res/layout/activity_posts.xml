@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
+    android:background="@drawable/accent_gradient_background"
     tools:context=".PostsActivity">
 
     <LinearLayout
@@ -24,7 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginTop="14dp">
 
             <Button
                 android:id="@+id/posts_previous_page"
