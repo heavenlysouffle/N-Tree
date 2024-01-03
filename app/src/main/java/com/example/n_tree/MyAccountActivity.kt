@@ -179,6 +179,12 @@ class MyAccountActivity : ComponentActivity() {
                                 }
                                 val buttonPosts: Button = findViewById(R.id.account_to_posts_btn)
                                 buttonPosts.background.alpha = 128
+                                buttonPosts.setOnClickListener(
+                                    View.OnClickListener {
+                                        val i: Intent = Intent(this@MyAccountActivity, PostsActivity::class.java)
+                                        startActivity(i)
+                                    }
+                                )
                             }
                         }
                     }

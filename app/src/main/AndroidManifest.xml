@@ -40,6 +40,9 @@
         <activity android:name=".CreateAccountActivity">
 
         </activity>
+        <activity android:name=".PostsActivity">
+
+        </activity>
     </application>
 
 </manifest>
