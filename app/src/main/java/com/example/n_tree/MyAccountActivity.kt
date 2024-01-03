@@ -177,6 +177,14 @@ class MyAccountActivity : ComponentActivity() {
                                     }
                                     eventType = parser.next()
                                 }
+                                val buttonCreateLink: Button = findViewById(R.id.account_create_link_btn)
+                                buttonCreateLink.setOnClickListener(
+                                    View.OnClickListener {
+                                        val i: Intent = Intent(this@MyAccountActivity, LinkCreateActivity::class.java)
+                                        startActivity(i)
+                                    }
+                                )
+
                                 val buttonPosts: Button = findViewById(R.id.account_to_posts_btn)
                                 buttonPosts.background.alpha = 128
                                 buttonPosts.setOnClickListener(
