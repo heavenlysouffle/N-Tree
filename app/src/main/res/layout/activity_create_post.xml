@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
                 android:layout_width="210dp"
-                android:hint="Ну шо там?"
+                android:hint="Ну що там?"
                 android:layout_height="48dp"
                 android:textColor="@color/green_dark"
                 android:textSize="16sp"/>

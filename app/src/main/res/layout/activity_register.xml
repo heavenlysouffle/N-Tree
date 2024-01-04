@@ -39,7 +39,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:layout_width="210dp"
-            android:hint="Email"
+            android:hint="Електронна пошта"
             android:layout_height="48dp"
             android:textColor="@color/green_dark"/>
 
@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
             android:layout_width="210dp"
-            android:hint="Password"
+            android:hint="Пароль"
             android:layout_height="48dp"
             android:textColor="@color/green_dark"/>
 
@@ -57,7 +57,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="18dp"
             android:layout_width="210dp"
-            android:hint="Nickname"
+            android:hint="Псевдонім"
             android:layout_height="48dp"
             android:textColor="@color/green_dark"/>
 

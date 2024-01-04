@@ -32,7 +32,7 @@
             <EditText
                 android:id="@+id/create_account_text_field_nickname"
                 android:layout_width="210dp"
-                android:hint="Nickname"
+                android:hint="Псевдонім"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/green_dark"
@@ -42,7 +42,7 @@
             <EditText
                 android:id="@+id/create_account_text_field_first_name"
                 android:layout_width="210dp"
-                android:hint="First Name"
+                android:hint="Ім'я"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/green_dark"
@@ -52,7 +52,7 @@
             <EditText
                 android:id="@+id/create_account_text_field_last_name"
                 android:layout_width="210dp"
-                android:hint="Last Name"
+                android:hint="Прізвище"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/green_dark"
@@ -62,7 +62,7 @@
             <EditText
                 android:id="@+id/create_account_text_field_description"
                 android:layout_width="210dp"
-                android:hint="Description"
+                android:hint="Опис"
                 android:layout_height="48dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/green_dark"
