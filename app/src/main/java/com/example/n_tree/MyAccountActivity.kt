@@ -150,10 +150,10 @@ class MyAccountActivity : ComponentActivity() {
                                 val descriptionView = findViewById<TextView>(R.id.my_account_text_field_description)
 
                                 photoView.setImageDrawable(drawable)
-                                nicknameView.text = "Nickname: $nickname"
-                                firstNameView.text = "First Name: $firstName"
-                                lastNameView.text = "Last Name: $lastName"
-                                descriptionView.text = "Description: $description"
+                                nicknameView.text = "Псевдонім: $nickname"
+                                firstNameView.text = "Ім'я: $firstName"
+                                lastNameView.text = "Прізвище: $lastName"
+                                descriptionView.text = "Опис: $description"
 
                                 val linearLayout = findViewById<LinearLayout>(R.id.my_account_links_layout)
                                 val factory = XmlPullParserFactory.newInstance()
