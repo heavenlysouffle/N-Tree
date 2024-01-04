@@ -200,6 +200,16 @@ class MyAccountActivity : ComponentActivity() {
                                         startActivity(i)
                                     }
                                 )
+
+                                val buttonLogOut: Button = findViewById(R.id.logout_btn)
+                                buttonLogOut.background.alpha = 128
+                                buttonLogOut.setOnClickListener(
+                                    View.OnClickListener {
+                                        setToken(applicationContext, "")
+                                        val i: Intent = Intent(this@MyAccountActivity, MainActivity::class.java)
+                                        startActivity(i)
+                                    }
+                                )
                             }
                         }
                     }
