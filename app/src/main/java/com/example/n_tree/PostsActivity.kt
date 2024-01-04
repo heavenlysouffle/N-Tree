@@ -291,6 +291,13 @@ class PostsActivity: ComponentActivity() {
                                     i.putExtra("nickname", nickname)
                                     startActivity(i)
                                 }
+
+                                val buttonBackToAccount: Button = findViewById(R.id.posts_back_to_account)
+                                buttonBackToAccount.setOnClickListener {
+                                    val i = Intent(this@PostsActivity, MyAccountActivity::class.java)
+                                    i.putExtra("nickname", nickname)
+                                    startActivity(i)
+                                }
                             }
                         }
                     }
